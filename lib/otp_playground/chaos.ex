@@ -36,10 +36,12 @@ defmodule OtpPlayground.Chaos do
   def handle_info(:strike, state) do
     # Pick one random name out of @counters, e.g. :counter_b.
     victim = Enum.random(@counters)
-    IO.puts(">>> CHAOS: crashing #{victim}")
     # Calls Counter's client API — sends a :crash message to that
     # specific named process (cast, so Chaos doesn't wait/crash itself).
+    IO.puts(">>> CHAOS: crashing #{victim}")
     OtpPlayground.Counter.crash(victim)
+    IO.puts(">>> CHAOS: #{victim} restarting...")
+
     # Re-arm the timer so this keeps happening every 7s, forever.
     schedule_strike()
     {:noreply, state}

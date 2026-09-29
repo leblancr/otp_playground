@@ -54,10 +54,10 @@ defmodule OtpPlayground.Counter do
   # self-sent :tick message (the polling mechanism).
   @impl true
   def handle_info(:tick, state) do
-    new_count = state.count + 1
+    new_count = state.count
     IO.puts("#{state.name}: #{new_count}")
     schedule_tick()
-    {:noreply, %{state | count: new_count}}
+    {:noreply, %{state | count: state.count}}
   end
 
   @impl true
