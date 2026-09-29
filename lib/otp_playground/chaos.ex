@@ -12,7 +12,7 @@ defmodule OtpPlayground.Chaos do
   # Fixed, compile-time list of the counter names Chaos is allowed to
   # pick a victim from. A module attribute — same value, shared across
   # every function in this module, never changes at runtime.
-  @counters [:counter_a, :counter_b, :counter_c]
+  @counters [:counter_a, :counter_b, :counter_c]  # only used in strike
   @strike_multiplier 7
 
   # Called by the Supervisor when this app boots (bare "OtpPlayground.Chaos"

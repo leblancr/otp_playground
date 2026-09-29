@@ -10,7 +10,7 @@ defmodule OtpPlayground.Counter do
 
   use GenServer
 
-  @tick_interval 2_000   # ← the one source of truth
+  @tick_interval 3_000   # ← the one source of truth
 
   def tick_interval, do: @tick_interval   # exposes it to other modules
 
@@ -54,20 +54,27 @@ defmodule OtpPlayground.Counter do
   # self-sent :tick message (the polling mechanism).
   @impl true
   def handle_info(:tick, state) do
-    new_count = state.count
-    IO.puts("#{state.name}: #{new_count}")
+    IO.puts("#{state.name}: #{state.count}")
+
+    case Enum.random([-1, 1]) do
+      1 -> increment(state.name)
+      -1 -> decrement(state.name)
+    end
+
     schedule_tick()
-    {:noreply, %{state | count: state.count}}
+    {:noreply, state}
   end
 
   @impl true
   def handle_cast(:increment, state) do
-    {:noreply, %{state | count: state.count + 1}}
+    new_count = state.count + 1
+    {:noreply, %{state | count: new_count}}
   end
 
   @impl true
   def handle_cast(:decrement, state) do
-    {:noreply, %{state | count: state.count - 1}}
+    new_count = state.count - 1
+    {:noreply, %{state | count: new_count}}
   end
 
   # Deliberately crashes the process — this is the "let it crash" demo.
