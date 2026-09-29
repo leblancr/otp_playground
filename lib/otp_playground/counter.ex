@@ -1,7 +1,18 @@
 defmodule OtpPlayground.Counter do
-  # `use GenServer` is a macro call — it injects default GenServer callbacks
-  # into this module and marks it as implementing the GenServer behaviour.
+  @moduledoc """
+  A single counter process.
+
+  Holds an integer count that increments once per second on its own
+  (self-scheduled tick), and can be incremented/decremented/crashed
+  on demand. Multiple named instances can run at once — start with
+  `start_link(name: :counter_a)`.
+  """
+
   use GenServer
+
+  @tick_interval 2_000   # ← the one source of truth
+
+  def tick_interval, do: @tick_interval   # exposes it to other modules
 
   # --- Client API ---
   # These are plain functions any other process calls. They don't run the
@@ -70,9 +81,9 @@ defmodule OtpPlayground.Counter do
   end
 
   # Private helper — only callable inside this module. Sends this same
-  # process a :tick message 1000ms from now, which is what makes the
-  # 1-second polling loop repeat forever.
+  # process a :tick message 2000ms from now, which is what makes the
+  # 2-second polling loop repeat forever.
   defp schedule_tick do
-    Process.send_after(self(), :tick, 1_000)
+    Process.send_after(self(), :tick, @tick_interval)
   end
 end
