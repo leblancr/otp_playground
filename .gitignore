@@ -22,3 +22,23 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 otp_playground-*.tar
 
+# Elixir / Mix
+/_build/
+/deps/
+/cover/
+/doc/
+/.fetch
+erl_crash.dump
+*.ez
+*.beam
+/config/*.secret.exs
+
+# Elixir Language Server
+/.elixir_ls/
+
+# Dialyzer
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
+
+.idea/
+*.iml

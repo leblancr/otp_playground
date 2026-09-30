@@ -8,8 +8,6 @@ defmodule OtpPlayground.Application do
 
   use Application
 
-#  @counters [:counter_a, :counter_b, :counter_c]
-
   @impl true
   def start(_type, _args) do
     children = [

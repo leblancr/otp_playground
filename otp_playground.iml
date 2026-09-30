@@ -14,7 +14,28 @@
       <excludeFolder url="file://$MODULE_DIR$/deps" />
       <excludeFolder url="file://$MODULE_DIR$/doc" />
       <excludeFolder url="file://$MODULE_DIR$/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/db_connection" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/decimal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ecto_sql" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/postgrex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/telemetry" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="ecto_sql [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="postgrex [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="ecto [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="telemetry [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="decimal [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="db_connection [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="myxql [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="tds [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="jason [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="ex_doc [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="makeup_sql [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="benchee [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="benchee_html [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="benchee_json [file:///home/ilya/projects/otp_playground]" level="project" />
+    <orderEntry type="library" name="table [file:///home/ilya/projects/otp_playground]" level="project" />
   </component>
 </module>
