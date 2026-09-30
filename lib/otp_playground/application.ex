@@ -8,17 +8,24 @@ defmodule OtpPlayground.Application do
 
   use Application
 
+  @count 1_0000
+
   @impl true
   def start(_type, _args) do
     children = [
-      Supervisor.child_spec({OtpPlayground.Counter, name: :counter_a}, id: :counter_a),
-      Supervisor.child_spec({OtpPlayground.Counter, name: :counter_b}, id: :counter_b),
-      Supervisor.child_spec({OtpPlayground.Counter, name: :counter_c}, id: :counter_c),
-      OtpPlayground.Chaos,
+      {DynamicSupervisor, strategy: :one_for_one, name: OtpPlayground.CounterSupervisor}
     ]
 
     opts = [strategy: :one_for_one, name: OtpPlayground.Supervisor]
     {:ok, pid} = Supervisor.start_link(children, opts)
+
+    for i <- 1..@count do
+      name = :"counter_#{i}"
+      DynamicSupervisor.start_child(
+        OtpPlayground.CounterSupervisor,
+        {OtpPlayground.Counter, name: name}
+      )
+    end
 
     {:ok, pid}
   end

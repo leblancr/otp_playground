@@ -10,7 +10,7 @@ defmodule OtpPlayground.Counter do
 
   use GenServer
 
-  @tick_interval 3_000   # ← the one source of truth
+  @tick_interval 1_000   # ← the one source of truth
 
   def tick_interval, do: @tick_interval   # exposes it to other modules
 
